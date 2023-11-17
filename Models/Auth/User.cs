@@ -25,9 +25,29 @@ namespace MoodAPI.Models.Auth
         public string Password { get; set; }
 
         [JsonProperty("quotes")]
-        public List<Quote> Quotes;
+        private List<Quote> quotes;
 
         [JsonProperty("joke")]
         public Joke Joke;
+
+        [JsonProperty("activity")]
+        public Activity Activity;
+            
+
+        public List<Quote> Quotes
+        {
+            get
+            {
+                if (quotes == null)
+                {
+                    quotes = new List<Quote>();
+                }
+                return quotes;
+            }
+            set
+            {
+                quotes = value;
+            }
+        }
     }
 }

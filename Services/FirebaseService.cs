@@ -3,6 +3,7 @@ using MoodAPI.Models.Auth;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Web.Helpers;
@@ -10,7 +11,7 @@ using System.Web.Helpers;
 namespace MoodAPI.Services
 {
     public class FirebaseService
-    { 
+    {
         private static FirebaseService firebaseService = null;
         public static FirebaseService Instance
         {
@@ -147,7 +148,32 @@ namespace MoodAPI.Services
             return Get<string>(id);
         }
 
+        //Method for adding questions in Firebase database
+        public void AddQuestions(Questions questions)
+        {
+            Patch(questions, "/questions");
+        }
+
+        //Method for retriving questions from Firebase database
+        public Questions GetQuestions()
+        {
+            return Get<Questions>("questions");
+        }
+
+
+        //Method for adding mood results in Firebase database
+        public void AddMoodResult (MoodQuizResult moodResult)
+        {
+            Patch(moodResult, "/mood_result");
+        }
+
+        public MoodQuizResult GetMoodResult()
+        {
+            return Get<MoodQuizResult>("mood_result");
+        }
 
        
     }
+    
 }
+

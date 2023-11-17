@@ -274,6 +274,11 @@
     <Compile Include="Auth\AuthenticationFailureResult.cs" />
     <Compile Include="Auth\JWTAutenticate.cs" />
     <Compile Include="Controllers\JokesController.cs" />
+    <Compile Include="Controllers\ActivityController.cs" />
+    <Compile Include="Controllers\MoodResultController.cs" />
+    <Compile Include="Controllers\QuestionsController.cs" />
+    <Compile Include="Controllers\QuotesController.cs" />
+    <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Bases\BaseController.cs" />
     <Compile Include="Models\Bases\BaseException.cs" />
     <Compile Include="Models\Bases\BaseResponse.cs" />
@@ -285,8 +290,15 @@
     </Compile>
     <Compile Include="Models\Helper.cs" />
     <Compile Include="Models\Auth\LoginCredentials.cs" />
-    <Compile Include="Models\HumorAPI\Joke.cs" />
+    <Compile Include="Models\JokeAPI\Joke.cs" />
+    <Compile Include="Models\Activity.cs" />
+    <Compile Include="Models\BoredAPI\ActivityAPI.cs" />
     <Compile Include="Models\Joke.cs" />
+    <Compile Include="Models\MoodQuizResult.cs" />
+    <Compile Include="Models\MoodQuizResultResponse.cs" />
+    <Compile Include="Models\PointsCount.cs" />
+    <Compile Include="Models\Question.cs" />
+    <Compile Include="Models\Questions.cs" />
     <Compile Include="Models\Quote.cs" />
     <Compile Include="Models\Auth\RegistrationData.cs" />
     <Compile Include="Models\Auth\User.cs" />
@@ -296,7 +308,10 @@
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Services\FirebaseService.cs" />
     <Compile Include="Services\JokesService.cs" />
+    <Compile Include="Services\ActivityService.cs" />
+    <Compile Include="Services\QuotesService.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Models\ZenQuotesAPI\Quote.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
