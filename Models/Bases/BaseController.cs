@@ -23,13 +23,18 @@ namespace MoodAPI.Bases
                 {
                     return _user;
                 }
-
-                if (_user == null && ((ClaimsPrincipal)User).Claims.ToList()[0] != null)
+                try
                 {
-                    var email = ((ClaimsPrincipal)User).Claims.ToList()[0].Value;
-                    _user = FirebaseService.Instance.GetUser(GetFireBaseEmail(email));
-                    return _user;
+                    if (_user == null && ((ClaimsPrincipal)User).Claims.ToList()[0] != null)
+                    {
+                        var email = ((ClaimsPrincipal)User).Claims.ToList()[0].Value;
+                        _user = FirebaseService.Instance.GetUser(GetFireBaseEmail(email));
+                        return _user;
+                    }
+                }catch (Exception e){
+                    throw new Exception($"Unable to get user. Check if you added proper attribute or if user has valid credentials.\r\nException message: {e.Message}");
                 }
+
 
                 return null;
             }

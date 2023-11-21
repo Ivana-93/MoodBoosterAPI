@@ -1,5 +1,6 @@
 ﻿using MoodAPI.Models;
 using MoodAPI.Models.Auth;
+using MoodAPI.Models.Diary_Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -161,18 +162,19 @@ namespace MoodAPI.Services
         }
 
 
-        //Method for adding mood results in Firebase database
+        //Method for adding mood results in Firebase database (so you don't need to write it in Firebase because this is easier)
         public void AddMoodResult (MoodQuizResult moodResult)
         {
             Patch(moodResult, "/mood_result");
         }
 
+        //Method for geting mood quiz result from FirebaseDatabase
         public MoodQuizResult GetMoodResult()
         {
             return Get<MoodQuizResult>("mood_result");
         }
 
-       
+
     }
     
 }

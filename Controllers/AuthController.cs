@@ -64,7 +64,7 @@ namespace MoodAPI.Controllers
 
                 return CreateOkResponse(new { token = idToken, user });
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return CreateErrorResponse("Auth fail");
             }

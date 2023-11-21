@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using MoodAPI.Models.Diary_Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,8 +33,17 @@ namespace MoodAPI.Models.Auth
 
         [JsonProperty("activity")]
         public Activity Activity;
-            
 
+        [JsonProperty("moodData")]
+        private List<MoodHistoryData> moodData;
+
+        [JsonProperty("diaryData")]
+        private List<DiaryData> diaryData;
+
+
+
+
+        [JsonIgnore]
         public List<Quote> Quotes
         {
             get
@@ -47,6 +57,44 @@ namespace MoodAPI.Models.Auth
             set
             {
                 quotes = value;
+            }
+        }
+
+
+
+        [JsonIgnore]
+        public List<MoodHistoryData> MoodData
+        {
+            get
+            {
+                if (moodData == null)
+                {
+                    moodData = new List<MoodHistoryData>();
+                }
+                return moodData;
+            }
+            set
+            {
+                moodData = value;
+            }
+        }
+
+
+
+        [JsonIgnore]
+        public List<DiaryData> DiaryData
+        {
+            get
+            {
+                if (diaryData == null)
+                {
+                    diaryData = new List<DiaryData>();
+                }
+                return diaryData;
+            }
+            set
+            {
+                diaryData = value;
             }
         }
     }

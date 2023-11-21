@@ -273,8 +273,10 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Auth\AuthenticationFailureResult.cs" />
     <Compile Include="Auth\JWTAutenticate.cs" />
+    <Compile Include="Controllers\DiaryController.cs" />
     <Compile Include="Controllers\JokesController.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
+    <Compile Include="Controllers\MoodHistoryDataController.cs" />
     <Compile Include="Controllers\MoodResultController.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
     <Compile Include="Controllers\QuotesController.cs" />
@@ -288,17 +290,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DiaryModels\DiaryData.cs" />
+    <Compile Include="Models\DiaryModels\DiaryDataRequest.cs" />
+    <Compile Include="Models\DiaryModels\DiaryEntries.cs" />
     <Compile Include="Models\Helper.cs" />
     <Compile Include="Models\Auth\LoginCredentials.cs" />
     <Compile Include="Models\JokeAPI\Joke.cs" />
     <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\BoredAPI\ActivityAPI.cs" />
     <Compile Include="Models\Joke.cs" />
-    <Compile Include="Models\MoodQuizResult.cs" />
-    <Compile Include="Models\MoodQuizResultResponse.cs" />
+    <Compile Include="Models\Mood Quiz and Calendar Models\MoodHistoryData.cs" />
+    <Compile Include="Models\Mood Quiz and Calendar Models\MoodHistoryUpdateRequest.cs" />
+    <Compile Include="Models\Mood Quiz and Calendar Models\MoodQuizResult.cs" />
+    <Compile Include="Models\Mood Quiz and Calendar Models\MoodQuizResultResponse.cs" />
     <Compile Include="Models\PointsCount.cs" />
-    <Compile Include="Models\Question.cs" />
-    <Compile Include="Models\Questions.cs" />
+    <Compile Include="Models\Mood Quiz and Calendar Models\Question.cs" />
+    <Compile Include="Models\Mood Quiz and Calendar Models\Questions.cs" />
     <Compile Include="Models\Quote.cs" />
     <Compile Include="Models\Auth\RegistrationData.cs" />
     <Compile Include="Models\Auth\User.cs" />
