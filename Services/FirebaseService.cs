@@ -2,10 +2,12 @@
 using MoodAPI.Models.Auth;
 using MoodAPI.Models.Diary_Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Web.Helpers;
 
@@ -163,7 +165,7 @@ namespace MoodAPI.Services
 
 
         //Method for adding mood results in Firebase database (so you don't need to write it in Firebase because this is easier)
-        public void AddMoodResult (MoodQuizResult moodResult)
+        public void AddMoodResult(MoodQuizResult moodResult)
         {
             Patch(moodResult, "/mood_result");
         }
@@ -174,8 +176,36 @@ namespace MoodAPI.Services
             return Get<MoodQuizResult>("mood_result");
         }
 
+        public FirebaseExchangeTokenResponse ExchangeTokens(string refreshToken)
+        {
+            string response = "";
 
+            using (HttpClient http = new HttpClient())
+            {
+
+                var stringContent = JsonContent.Create(new
+                {
+                    grant_type = "refresh_token",
+                    refresh_token = refreshToken
+                });
+                
+                var request = new HttpRequestMessage()
+                {
+                    RequestUri = new Uri($"https://securetoken.googleapis.com/v1/token?key={Helper.FirebaseApiKey}"),
+                    Method = HttpMethod.Post,
+                    Content = stringContent
+
+                };
+
+                request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var data = http.SendAsync(request).Result;
+                response = data.Content.ReadAsStringAsync().Result;
+            };
+
+            return JsonConvert.DeserializeObject<FirebaseExchangeTokenResponse>(response);
+        }
     }
-    
+
 }
 

@@ -1,4 +1,5 @@
-﻿using MoodAPI.Models;
+﻿using FirebaseAdmin.Messaging;
+using MoodAPI.Models;
 using MoodAPI.Models.Auth;
 using MoodAPI.Services;
 using System;
@@ -85,6 +86,17 @@ namespace MoodAPI.Bases
         public ErrorResponse CreateErrorResponse(Exception e)
         {
             return CreateErrorResponse(e.Message);
+        }
+
+        [NonAction]
+        public ErrorResponse CreateUnauthorizedResponse()
+        {
+            return new ErrorResponse
+            {
+                Message = "Unauthorized",
+                Status = HttpStatusCode.Unauthorized,
+                IsSuccess = false
+            };
         }
 
         [NonAction]

@@ -1,19 +1,25 @@
 ﻿using Firebase.Auth;
 using Firebase.Auth.Providers;
 using Firebase.Auth.Repository;
+using Firebase.Auth.Requests;
+using FirebaseAdmin;
 using FirebaseAdmin.Auth;
 using MoodAPI.Bases;
 using MoodAPI.Models;
 using MoodAPI.Models.Auth;
 using MoodAPI.Services;
 using System;
+using System.Diagnostics;
+using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace MoodAPI.Controllers
 {
     [AllowAnonymous]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class AuthController : BaseController
     {
 
@@ -62,11 +68,11 @@ namespace MoodAPI.Controllers
                 var idToken = await credential.User.GetIdTokenAsync();
                 user.Password = string.Empty;
 
-                return CreateOkResponse(new { token = idToken, user });
+                return CreateOkResponse(new { token = idToken, user, refreshToken = credential.User.Credential.RefreshToken });
             }
             catch (Exception e)
             {
-                return CreateErrorResponse("Auth fail");
+                return CreateUnauthorizedResponse();
             }
         }
 
@@ -119,6 +125,32 @@ namespace MoodAPI.Controllers
             catch (Exception e)
             {
                 return CreateErrorResponse(e.Message);
+            }
+        }
+
+        [Route("api/auth/refresh-token")]
+        [HttpPost]
+        public BaseResponse RefreshToken([FromBody] Models.Auth.RefreshTokenRequest request)
+        {
+            try
+            {
+                FirebaseApp firebaseApp = FirebaseApp.GetInstance(Helper.FirebaseApiKey);
+
+                if (firebaseApp == null)
+                {
+                    firebaseApp = FirebaseApp.Create(Helper.FirebaseApiKey);
+                }
+
+                // Generate a new access token
+                var newCredentials = FirebaseService.Instance.ExchangeTokens(request.RefreshToken);
+
+                // Return the new access token
+                return CreateOkResponse(new { accessToken = newCredentials.IdToken });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return CreateUnauthorizedResponse();
             }
         }
 

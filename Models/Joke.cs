@@ -12,6 +12,6 @@ namespace MoodAPI.Models
         public string Content {  get; set; }
         [JsonProperty("date")]
         public string Date {  get; set; }
-        //....
+        
     }
 }

@@ -28,8 +28,8 @@ namespace MoodAPI.Models.Auth
         [JsonProperty("quotes")]
         private List<Quote> quotes;
 
-        [JsonProperty("joke")]
-        public Joke Joke;
+        //[JsonProperty("joke")]
+        //public Joke Joke;
 
         [JsonProperty("activity")]
         public Activity Activity;
@@ -40,8 +40,34 @@ namespace MoodAPI.Models.Auth
         [JsonProperty("diaryData")]
         private List<DiaryData> diaryData;
 
+        [JsonProperty("joke")]
+        private Dictionary<string, string> jokeData = new Dictionary<string, string>
+        {
+            {"content",null },
+            {"date",null }
+        };
 
-
+        [JsonIgnore]
+        public Joke Joke
+        {
+            get
+            {
+                if (jokeData["content"] == null || jokeData["date"] == null)
+                {
+                    return null;
+                }
+                return new Joke
+                {
+                    Content = jokeData["content"],
+                    Date = jokeData["date"]
+                };
+            }
+            set
+            {
+                jokeData["content"] = value.Content;
+                jokeData["date"] = value.Date;
+            }
+        }
 
         [JsonIgnore]
         public List<Quote> Quotes

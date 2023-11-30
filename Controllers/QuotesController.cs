@@ -35,6 +35,23 @@ namespace MoodAPI.Controllers
             }
         }
 
+
+        [HttpGet]
+        [Route("api/quotes")]
+
+        public BaseResponse GetUserQuotes()
+        {
+            try
+            {
+                return CreateOkResponse(AuthorizedUser.Quotes);
+            }
+            catch (Exception e)
+            {
+                return CreateErrorResponse(e);
+            }
+        }
+
+
     }
 
 }

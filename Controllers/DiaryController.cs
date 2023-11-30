@@ -44,7 +44,7 @@ namespace MoodAPI.Controllers
         [HttpGet]
         [Route("api/diaryentry")]
 
-        public BaseResponse UpdateDiaryEntryList()
+        public BaseResponse GetDiaryEntries()
         {
             try
             {

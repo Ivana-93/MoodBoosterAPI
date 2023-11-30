@@ -281,6 +281,8 @@
     <Compile Include="Controllers\QuestionsController.cs" />
     <Compile Include="Controllers\QuotesController.cs" />
     <Compile Include="Models\Answer.cs" />
+    <Compile Include="Models\Auth\FirebaseExchangeTokenResponse.cs" />
+    <Compile Include="Models\Auth\RefreshTokenRequest.cs" />
     <Compile Include="Models\Bases\BaseController.cs" />
     <Compile Include="Models\Bases\BaseException.cs" />
     <Compile Include="Models\Bases\BaseResponse.cs" />

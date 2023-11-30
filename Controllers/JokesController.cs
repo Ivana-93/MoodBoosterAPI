@@ -3,6 +3,7 @@ using MoodAPI.Bases;
 using MoodAPI.Models;
 using MoodAPI.Models.Auth;
 using MoodAPI.Services;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -25,7 +26,7 @@ namespace MoodAPI.Controllers
                 {
                     AuthorizedUser.Joke = JokesService.Instance.GetRandomJoke();
 
-                    FirebaseService.Instance.CreateAndUpdateUser(AuthorizedUser); //kreso fix to save it to firebase
+                    FirebaseService.Instance.CreateAndUpdateUser(AuthorizedUser);
                 }
 
                 return CreateOkResponse(AuthorizedUser.Joke);
