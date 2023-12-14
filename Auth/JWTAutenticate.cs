@@ -1,15 +1,11 @@
-﻿using Antlr.Runtime;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Headers;
 using System.Net.Http;
 using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Threading;
-using System.Web;
 using System.Web.Http.Filters;
-using MoodAPI.Models.Auth;
 using FirebaseAdmin.Auth;
 using FirebaseAdmin;
 using System.Security.Claims;
@@ -55,13 +51,6 @@ namespace MoodAPI.Auth
                 context.ErrorResult = new AuthenticationFailureResult("Invalid token", request);
                 return;
             }
-
-
-            /*if (!(token.ExpirationTimeSeconds > DateTime.Now.Second))
-            {
-                context.ErrorResult = new AuthenticationFailureResult("Token expire", request);
-                return;
-            }*/
 
 
             IPrincipal principal = new GenericPrincipal(new ClaimsIdentity(ToClaims(firebaseToken.Claims)), new string[] { "user" });

@@ -1,15 +1,11 @@
 ﻿using MoodAPI.Models;
 using MoodAPI.Models.Auth;
-using MoodAPI.Models.Diary_Models;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
-using System.Web.Helpers;
 
 namespace MoodAPI.Services
 {
@@ -31,12 +27,6 @@ namespace MoodAPI.Services
 
 
         //GET method for connection to firebase to retrive data
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="filename"></param>
-        /// <returns></returns>
         private T Get<T>(string filename)
         {
             string response = "";
@@ -60,12 +50,7 @@ namespace MoodAPI.Services
             };
         }
 
-        /// <summary>
         /// PATCH method for connection to firebase to update data - PATCH works better for Firebase then POST
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="value"></param>
-        /// <param name="filename"></param>
         private void Patch<T>(T value, string filename)
         {
             string response = "";

@@ -280,6 +280,7 @@
     <Compile Include="Controllers\MoodResultController.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
     <Compile Include="Controllers\QuotesController.cs" />
+    <Compile Include="Controllers\TriviaController.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Auth\FirebaseExchangeTokenResponse.cs" />
     <Compile Include="Models\Auth\RefreshTokenRequest.cs" />
@@ -313,9 +314,12 @@
     <Compile Include="Models\Auth\User.cs" />
     <Compile Include="Models\Auth\Users.cs" />
     <Compile Include="Models\Responses.cs" />
+    <Compile Include="Models\TriviaQuestion.cs" />
+    <Compile Include="Models\OpenTriviaAPI\TriviaAPIResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Services\FirebaseService.cs" />
+    <Compile Include="Services\TriviaService.cs" />
     <Compile Include="Services\JokesService.cs" />
     <Compile Include="Services\ActivityService.cs" />
     <Compile Include="Services\QuotesService.cs" />

@@ -82,11 +82,8 @@ namespace MoodAPI.Bases
             };
         }
 
-        [NonAction]
-        public ErrorResponse CreateErrorResponse(Exception e)
-        {
-            return CreateErrorResponse(e.Message);
-        }
+
+
 
         [NonAction]
         public ErrorResponse CreateUnauthorizedResponse()
@@ -100,12 +97,30 @@ namespace MoodAPI.Bases
         }
 
         [NonAction]
+        public ErrorResponse CreateErrorResponse(Exception e, HttpStatusCode code)
+        {
+            return CreateErrorResponse(e.Message, code);
+        }
+
+        [NonAction]
+        public ErrorResponse CreateErrorResponse(Exception e)
+        {
+            return CreateErrorResponse(e.Message);
+        }
+
+        [NonAction]
         public ErrorResponse CreateErrorResponse(string message)
+        {
+            return CreateErrorResponse(message);
+        }
+
+        [NonAction]
+        public ErrorResponse CreateErrorResponse(string message, HttpStatusCode code = HttpStatusCode.InternalServerError)
         {
             return new ErrorResponse
             {
                 Message = message,
-                Status = HttpStatusCode.InternalServerError,
+                Status = code,
                 IsSuccess = false
             };
         }

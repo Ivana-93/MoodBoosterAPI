@@ -1,16 +1,11 @@
 ﻿using Firebase.Auth;
 using Firebase.Auth.Providers;
-using Firebase.Auth.Repository;
-using Firebase.Auth.Requests;
 using FirebaseAdmin;
-using FirebaseAdmin.Auth;
 using MoodAPI.Bases;
 using MoodAPI.Models;
 using MoodAPI.Models.Auth;
 using MoodAPI.Services;
 using System;
-using System.Diagnostics;
-using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Http;

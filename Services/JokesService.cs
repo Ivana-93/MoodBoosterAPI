@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json;
-
 using MoodAPI.Models;
 
 namespace MoodAPI.Services
